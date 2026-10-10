@@ -3,4 +3,4 @@ image:
   repository: 690844522716.dkr.ecr.eu-central-1.amazonaws.com/practice-k8s/api
   # Set by CI in ZG77/practice-k8s-apps (git SHA). Do not edit by hand.
   # Rollback: git revert the "deploy(dev)" commit.
-  tag: ""
+  tag: "30a8c928be510dc85c8eebecbe7c1ae58d7a266f"
