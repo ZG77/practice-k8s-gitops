@@ -1,0 +1,6 @@
+# Helm values for api. The chart is added in the Argo CD step.
+image:
+  repository: 690844522716.dkr.ecr.eu-central-1.amazonaws.com/practice-k8s/api
+  # Set by CI in ZG77/practice-k8s-apps (git SHA). Do not edit by hand.
+  # Rollback: git revert the "deploy(dev)" commit.
+  tag: ""

@@ -1,0 +1,27 @@
+# Karpenter Helm values.
+# Chart: oci://public.ecr.aws/karpenter/karpenter  version 1.14.1
+# Namespace: karpenter (must match the Pod Identity association in Terraform)
+
+serviceAccount:
+  name: karpenter # must match the Pod Identity association in Terraform
+
+settings:
+  clusterName: practice-dev
+  interruptionQueue: practice-dev-karpenter # SQS queue from Terraform
+  featureGates:
+    # Replace a Spot node with a cheaper Spot node.
+    # Needs at least 15 instance types in the NodePool.
+    spotToSpotConsolidation: true
+
+# Run only on the system node group, never on nodes Karpenter creates.
+# Chart defaults already add: toleration CriticalAddonsOnly, and anti-affinity to karpenter.sh/nodepool.
+nodeSelector:
+  node-role: system
+
+controller:
+  resources:
+    requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      memory: 1Gi
