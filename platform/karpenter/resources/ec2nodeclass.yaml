@@ -6,10 +6,11 @@ spec:
   role: practice-dev-karpenter-node # node IAM role from Terraform
 
   # AL2023. Karpenter picks the arm64 image from the NodePool requirements.
-  # "latest" follows the cluster version: after an EKS upgrade, nodes drift and get replaced.
-  # Production: pin a version (example: al2023@v20260928) and update it in Git.
+  # Pinned AMI release. Nodes change only when you change this line in Git.
+  # Update it on purpose (also after an EKS upgrade). Karpenter then replaces the nodes (drift).
+  # Find the current release: kubectl get ec2nodeclass default -o jsonpath='{.status.amis[*].name}'
   amiSelectorTerms:
-    - alias: al2023@latest
+    - alias: al2023@v20261012
 
   subnetSelectorTerms:
     - tags:
