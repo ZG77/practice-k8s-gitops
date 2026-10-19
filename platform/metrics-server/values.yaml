@@ -1,0 +1,10 @@
+# metrics-server Helm values.
+# Chart: metrics-server  version 3.14.0  repo: https://kubernetes-sigs.github.io/metrics-server/
+# Namespace: kube-system
+
+# Run on the system node group.
+nodeSelector:
+  node-role: system
+tolerations:
+  - key: CriticalAddonsOnly
+    operator: Exists
